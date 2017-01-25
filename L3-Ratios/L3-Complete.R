@@ -24,13 +24,11 @@ cbt_nonpos <- nrow(filter(data, Treat == "CBT", Postwt - Prewt <= 0))
 control_pos <- nrow(filter(data, Treat == "Cont", Postwt - Prewt > 0))
 control_nonpos <- nrow(filter(data, Treat == "Cont", Postwt - Prewt <= 0))
 
-#What kind of analysis appropriate to perform on a study like this?
-
+#What kind of analysis is appropriate to perform on a study like this?
 
 
 
 #Perform the appropriate choice on the dataset
-
 
 
 
