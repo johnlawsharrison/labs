@@ -7,20 +7,22 @@ library (dplyr)
 
 #Using the built in dataset anorexia, aggregate the data to look at:
 #       1. the number of patients who received a treatment (choose one) who responded positively to treatment
-#       2. the number of patients who recieved a treatment who either did not respond or responded negatively to treatment
+#       2. the number of patients who received a treatment who either did not respond or responded negatively to treatment
 #       3. the number of patients who were in the control group who responded positively to treatment
 #       4. the number of patients who were in the control group who did not respond or responded negatively to treatment
 
 #Such that you end up with a 2 by 2 table
 
-data <- mutate(anorexia, weight.change = X3 - X2) #Positive numbers mean that treatment worked!
+data <- anorexia
 
-weight.decrease <- filter(data, weight.change <= 0, X1 == "Cont")
+#weight.decrease <- filter(data, weight.change <= 0, X1 == "Cont")
                    
-nrow(weight.decrease)
-  
+#nrow(weight.decrease)
 
-
+cbt_pos <- nrow(filter(data, Treat == "CBT", Postwt - Prewt > 0))
+cbt_nonpos <- nrow(filter(data, Treat == "CBT", Postwt - Prewt <= 0))
+control_pos <- nrow(filter(data, Treat == "Cont", Postwt - Prewt > 0))
+control_nonpos <- nrow(filter(data, Treat == "Cont", Postwt - Prewt <= 0))
 
 #What kind of analysis appropriate to perform on a study like this?
 
@@ -46,8 +48,3 @@ nrow(weight.decrease)
 
 
 #Which treatment worked better?
-
-
-
-
-
